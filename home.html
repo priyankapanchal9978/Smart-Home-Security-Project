@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Home Security</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .home {
+      width: 100%;
+      height: 100vh;
+      background: 
+        linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+        url("bg.jpg") no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      /* 3D perspective */
+      perspective: 1000px;
+    }
+
+    img {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+
+      /* 3D base */
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    /* 3D hover effect on image */
+    img:hover {
+      transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+      color:#1e3c72;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color:#1e3c72;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background: #1e3c72;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+
+      /* 3D button */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* Button hover 3D */
+    button:hover {
+      background: #16305a;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="home">
+    <img src="first.jpeg" alt="Smart Home Security">
+    <h1>Protect Your Home Using Smart Security</h1>
+    <p>Advanced smart security keeps your home safe.</p>
+    <p>Monitor and control your home from anywhere.</p>
+
+    <!-- Button -->
+    <button id="getStartedBtn">Get Started</button>
+  </div>
+
+  <script>
+    document.getElementById("getStartedBtn").addEventListener("click", function () {
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>

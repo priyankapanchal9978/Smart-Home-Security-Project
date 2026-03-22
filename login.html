@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Home Security - Login</title>
+
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    background:url("bg.jpg") no-repeat center/cover;
+    filter:blur(4px);
+    transform:scale(1.05);
+    z-index:-1;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CONTAINER */
+.container{
+    width:100%;
+    max-width:450px;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid #e6eaf0;
+}
+header h1{font-size:24px;color:#1e3c72}
+header p{font-size:14px;color:#1e3c72}
+
+/* FORMS */
+.form{display:none}
+.form.active{display:block}
+.form-content{padding:30px}
+
+/* INPUT */
+.field{margin-bottom:18px}
+label{font-size:14px;color:#1e3c72;display:block;margin-bottom:6px}
+
+input, select{
+    width:100%;
+    height:45px;
+    padding:0 14px;
+    border-radius:8px;
+    border:2px solid #d5dbea;
+    font-size:14px;
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:#1e3c72;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    height:45px;
+    border:none;
+    border-radius:25px;
+    background:#1e3c72;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+}
+
+/* LINKS */
+.forgot-pass{
+    display:block;
+    text-align:right;
+    font-size:13px;
+    margin-bottom:18px;
+    color:#1e3c72;
+    text-decoration:none;
+}
+.form-link{
+    text-align:center;
+    font-size:14px;
+    margin-top:18px;
+}
+.form-link a{color:#1e3c72;font-weight:500;text-decoration:none}
+
+.checkbox-field{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;       /* text small */
+    color:#1e3c72;
+    margin-bottom:16px;
+}
+
+.checkbox-field input{
+    width:14px;           /* checkbox small */
+    height:14px;
+    cursor:pointer;
+}
+
+.checkbox-field span{
+    line-height:1.2;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div class="form active login-form">
+<header>
+  <h1><i class='bx bxs-shield-alt'></i> Smart Home Security</h1>
+  <p>Secure login for your protection</p>
+</header>
+
+<div class="form-content">
+<form id="loginForm">
+  <div class="field">
+    <input type="email" placeholder="Email" required>
+  </div>
+  <div class="field">
+    <input type="password" placeholder="Password" required>
+  </div>
+
+  <a href="#" class="forgot-pass">Forgot password?</a>
+  <button type="submit">Login</button>
+</form>
+
+<div class="form-link">
+  Don’t have an account?
+  <a href="#" id="openSignup">Create Account</a>
+</div>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div class="form signup-form">
+<header>
+  <h1><i class='bx bxs-shield-alt'></i> Smart Home Security</h1>
+  <p>Create your account</p>
+</header>
+
+<div class="form-content">
+<form id="signupForm">
+
+  <div class="field">
+    <label>Email</label>
+    <input type="email" required>
+  </div>
+
+  <div class="field">
+    <label>Phone</label>
+    <input type="tel" required>
+  </div>
+
+  <div class="field">
+    <label>Password</label>
+    <input type="password" required>
+  </div>
+
+  <div class="field">
+    <label>Confirm Password</label>
+    <input type="password" required>
+  </div>
+
+  <!-- ✅ SECURITY QUESTION -->
+  <div class="field">
+    <label>Security Question</label>
+    <select required>
+      <option value="">Select question</option>
+      <option>Mother's maiden name?</option>
+      <option>First pet name?</option>
+      <option>Primary school?</option>
+    </select>
+  </div>
+
+  <!-- ✅ ANSWER BOX (FIXED) -->
+  <div class="field">
+    <label>Your Answer</label>
+    <input type="text" placeholder="Enter your answer" required>
+  </div>
+
+  <div class="checkbox-field">
+    <input type="checkbox" required>
+    <span>I agree to <strong>Terms & Privacy Policy</strong></span>
+  </div>
+
+  <button type="submit">Create Account</button>
+</form>
+
+<div class="form-link">
+  Already have an account?
+  <a href="#" id="openLogin">Sign in</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+const loginFormBox=document.querySelector(".login-form");
+const signupFormBox=document.querySelector(".signup-form");
+
+openSignup.onclick=e=>{
+  e.preventDefault();
+  loginFormBox.classList.remove("active");
+  signupFormBox.classList.add("active");
+};
+
+openLogin.onclick=e=>{
+  e.preventDefault();
+  signupFormBox.classList.remove("active");
+  loginFormBox.classList.add("active");
+};
+
+loginForm.onsubmit = function(e){
+  e.preventDefault();
+
+  const email = loginForm.querySelector("input[type='email']").value;
+  const password = loginForm.querySelector("input[type='password']").value;
+
+  if(email !== "" && password !== ""){
+      localStorage.setItem("token", "loggedIn");
+      window.location.href = "dashboard.html";
+  } else {
+      alert("Enter email and password");
+  }
+};
+
+signupForm.onsubmit=e=>{
+  e.preventDefault();
+  alert("Account Created Successfully!");
+  signupFormBox.classList.remove("active");
+  loginFormBox.classList.add("active");
+};
+</script>
+
+</body>
+</html>
